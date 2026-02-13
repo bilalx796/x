@@ -1,1 +1,54 @@
 
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #ffe6e6;
+  color: #b30059;
+  padding-top: 100px;
+  overflow-x: hidden;
+  transition: background 0.5s;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 50px;
+}
+
+button {
+  font-size: 1.5em;
+  padding: 10px 40px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#yes {
+  background-color: pink;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: white;
+}
+
+#no {
+  background-color: gray;
+  font-family: Arial, sans-serif;
+  color: black;
+  position: relative;
+}
+
+#message, #final-text {
+  font-size: 2em;
+  margin-top: 50px;
+}
+
+#countdown {
+  font-size: 5em;
+  margin-top: 50px;
+  color: #b30059;
+}
+
+#surprise-img, #kitten-gif {
+  max-width: 80%;
+  margin-top: 30px;
+}
