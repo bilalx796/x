@@ -1,4 +1,3 @@
-
 const yesBtn = document.getElementById('yes');
 const noBtn = document.getElementById('no');
 const messageDiv = document.getElementById('message');
@@ -17,7 +16,7 @@ const noMessages = [
 
 let noCount = 0;
 let countdownStarted = false;
-let yesFullScreen = false;
+let yesClicked = false;
 
 noBtn.addEventListener('click', () => {
   if (noCount < noMessages.length) {
@@ -30,22 +29,18 @@ noBtn.addEventListener('click', () => {
 });
 
 yesBtn.addEventListener('click', () => {
-  if (!yesFullScreen) {
-    yesFullScreen = true;
-    // fill the screen
-    yesBtn.style.position = "fixed";
-    yesBtn.style.top = 0;
-    yesBtn.style.left = 0;
-    yesBtn.style.width = "100%";
-    yesBtn.style.height = "100%";
-    yesBtn.style.fontSize = "5em";
-    yesBtn.style.zIndex = 9999;
+  if (!yesClicked) {
+    yesClicked = true;
 
-    // show final text above
+    // Hide the Yes button
+    yesBtn.style.display = 'none';
+
+    // Show final text above
     finalTextDiv.textContent = "yeah what now?";
 
-    // show kitten/puppy image
+    // Show kitten/puppy image
     surpriseImg.style.display = "block";
+
   } else {
     // second click triggers rainbow flash and kitten GIF
     rainbowFlash();
@@ -62,7 +57,7 @@ function startCountdown() {
     } else {
       clearInterval(interval);
       countdownDiv.textContent = "";
-      yesBtn.click(); // force full screen yes
+      yesBtn.click(); // force yes
     }
   }, 1000);
 }
