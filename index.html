@@ -3,132 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Valentine's Surprise</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #ffe6e6;
-      color: #b30059;
-      padding-top: 100px;
-      overflow-x: hidden;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 50px;
-    }
-    button {
-      font-size: 1.5em;
-      padding: 10px 40px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    #yes {
-      background-color: pink;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: white;
-    }
-    #no {
-      background-color: gray;
-      font-family: Arial, sans-serif;
-      color: black;
-      position: relative;
-    }
-    .message {
-      font-size: 2em;
-      margin-top: 50px;
-    }
-    #countdown {
-      font-size: 5em;
-      margin-top: 50px;
-      color: #b30059;
-    }
-    #surprise-img {
-      max-width: 80%;
-      margin-top: 30px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Will you be my Valentine?</h1>
-  <button id="yes">Yess!!</button>
-  <button id="no">No</button>
+  <button id="yes">YES!</button>
+  <button id="no">No.</button>
 
-  <div id="messages"></div>
+  <div id="message"></div>
   <div id="countdown"></div>
-  <img id="surprise-img" style="display:none;" src="https://i.imgur.com/0w2I0Fj.jpg" alt="Kitten and Puppy Hug">
-
-  <script>
-    const yesBtn = document.getElementById('yes');
-    const noBtn = document.getElementById('no');
-    const messagesDiv = document.getElementById('messages');
-    const countdownDiv = document.getElementById('countdown');
-    const surpriseImg = document.getElementById('surprise-img');
-
-    const noMessages = [
-      "umm choose again",
-      "i think ur choosing the wrong one lol",
-      "ok fr i get it's funny but stop now",
-      "BABY STOP ITTTT NOWW",
-      "ok ykw, choose no again and see what happens"
-    ];
-
-    let noCount = 0;
-    let countdownStarted = false;
-
-    noBtn.addEventListener('click', () => {
-      if (noCount < noMessages.length) {
-        const msg = document.createElement('div');
-        msg.className = "message";
-        msg.textContent = noMessages[noCount];
-        messagesDiv.appendChild(msg);
-        noCount++;
-      } else if (!countdownStarted) {
-        countdownStarted = true;
-        startCountdown();
-      }
-    });
-
-    yesBtn.addEventListener('click', () => {
-      // fill the screen
-      yesBtn.style.position = "fixed";
-      yesBtn.style.top = 0;
-      yesBtn.style.left = 0;
-      yesBtn.style.width = "100%";
-      yesBtn.style.height = "100%";
-      yesBtn.style.fontSize = "5em";
-      yesBtn.style.zIndex = 9999;
-
-      // bottom text
-      const msg = document.createElement('div');
-      msg.className = "message";
-      msg.textContent = "yeah what now?";
-      messagesDiv.appendChild(msg);
-
-      // after a short delay, show image and final text
-      setTimeout(() => {
-        messagesDiv.innerHTML = "<div class='message'>YAAAYYYYYAYAYYAYYYAYY!!!</div>";
-        surpriseImg.style.display = "block";
-      }, 2000);
-    });
-
-    function startCountdown() {
-      let count = 3;
-      countdownDiv.textContent = count;
-      const interval = setInterval(() => {
-        count--;
-        if (count > 0) {
-          countdownDiv.textContent = count;
-        } else {
-          clearInterval(interval);
-          countdownDiv.textContent = "";
-          // make Yes button fill screen automatically
-          yesBtn.click();
-        }
-      }, 1000);
-    }
-  </script>
+  <div id="final-text"></div>
+  <img id="surprise-img" src="https://i.imgur.com/0w2I0Fj.jpg" alt="Kitten and Puppy Hug" style="display:none;">
+  <img id="kitten-gif" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kitten GIF" style="display:none;">
+  
+  <script src="script.js"></script>
 </body>
 </html>
