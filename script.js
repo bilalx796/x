@@ -9,6 +9,7 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
 });
 
+// Heart class for animation
 class Heart {
   constructor() {
     this.reset();
@@ -18,7 +19,6 @@ class Heart {
     this.y = Math.random() * canvas.height - canvas.height;
     this.size = 10 + Math.random() * 20;
     this.speed = 1 + Math.random() * 3;
-    this.angle = Math.random() * Math.PI * 2;
   }
   draw() {
     ctx.fillStyle = "#ff4d94";
@@ -37,17 +37,47 @@ class Heart {
 }
 
 const hearts = [];
-for (let i = 0; i < 50; i++) {
-  hearts.push(new Heart());
-}
+for (let i = 0; i < 50; i++) hearts.push(new Heart());
+
+let animationRunning = true;
 
 function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  hearts.forEach(h => {
-    h.update();
-    h.draw();
-  });
+  if(animationRunning){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    hearts.forEach(h => { h.update(); h.draw(); });
+  }
   requestAnimationFrame(animate);
 }
 
 animate();
+
+// Buttons
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const bottomMessage = document.getElementById('bottomMessage');
+
+yesBtn.addEventListener('click', () => {
+  bottomMessage.textContent = "OMG REALLY? I NEVER EXPECTED THIS YAYAYAYAY";
+  rainbowFlash();
+});
+
+noBtn.addEventListener('click', () => {
+  animationRunning = false;
+  document.body.style.background = "#d3d3d3";
+  bottomMessage.textContent = "How dare you, you're not allowed to say no. I'm gonna rewind time to give you the opportunity to answer correctly.";
+  setTimeout(() => location.reload(), 4000);
+});
+
+// Rainbow flash function
+function rainbowFlash(){
+  const colors = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#9400D3"];
+  let i=0;
+  const interval = setInterval(()=>{
+    document.body.style.background = colors[i%colors.length];
+    i++;
+    if(i>20){
+      clearInterval(interval);
+      document.body.style.background = "#ffe6e6";
+    }
+  },150);
+}
