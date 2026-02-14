@@ -93,7 +93,7 @@ button:hover {
 .catGif {
   position: absolute;
   top: 50%;
-  width: 250px;
+  width: 400px;
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
