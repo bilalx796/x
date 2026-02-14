@@ -1,6 +1,7 @@
 const canvas = document.getElementById('heartCanvas');
 const ctx = canvas.getContext('2d');
 const bgMusic = document.getElementById('bgMusic');
+const thunderSound = document.getElementById('thunderSound');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -86,11 +87,8 @@ yesBtn.addEventListener('click', () => {
   startRainbowFlash();
   showCats();
 
-  // Start music
   bgMusic.volume = 0.5;
   bgMusic.play();
-
-  // Increase volume by 20%
   bgMusic.volume = Math.min(bgMusic.volume + 0.2, 1);
 });
 
@@ -104,9 +102,12 @@ noBtn.addEventListener('click', () => {
   bottomMessage.classList.remove("yesFont");
   bottomMessage.classList.add("noFont");
 
-  // Stop music immediately
   bgMusic.pause();
   bgMusic.currentTime = 0;
+
+  thunderSound.volume = 0.9;
+  thunderSound.currentTime = 0;
+  thunderSound.play();
 
   setTimeout(() => location.reload(), 4000);
 });
