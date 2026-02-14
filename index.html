@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click Yes ❤️</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Surprise</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Creepster&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1 id="question">Do you love me?</h1>
+  <canvas id="heartCanvas"></canvas>
 
-    <div class="button-container">
-        <button id="yesBtn">Yes 💖</button>
-        <button id="noBtn">No 😢</button>
+  <div id="centerContent">
+    <h1 id="valentineText">Will you be my Valentine?</h1>
+    <div id="buttons">
+      <button id="yesBtn">✅</button>
+      <button id="noBtn">❌</button>
     </div>
+  </div>
 
-    <!-- Cat GIFs -->
-    <img id="leftCat" class="cat hidden" src="cat.gif" alt="cat">
-    <img id="rightCat" class="cat hidden" src="cat.gif" alt="cat">
+  <div id="bottomMessage"></div>
 
-    <!-- Audio -->
-    <audio id="bgMusic" src="cute.mp3" loop></audio>
-    <audio id="thunderSound" src="thunder.mp3"></audio>
+  <!-- Audio -->
+  <audio id="bgMusic" loop>
+    <source src="cute.mp3" type="audio/mpeg">
+  </audio>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

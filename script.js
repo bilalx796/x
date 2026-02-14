@@ -100,7 +100,7 @@ noBtn.addEventListener('click', () => {
   stopRainbowFlash();
   document.body.style.background = "#111111";
 
-  bottomMessage.textContent = "How DARE you, you're not allowed to say no. I shall rewind time to allow you to fix your mistake.";
+  bottomMessage.textContent = "How dare you, you're not allowed to say no.";
   bottomMessage.classList.remove("yesFont");
   bottomMessage.classList.add("noFont");
 
