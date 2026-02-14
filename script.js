@@ -56,35 +56,25 @@ const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const bottomMessage = document.getElementById('bottomMessage');
 
-yesBtn.addEventListener('click', () => {
-  bottomMessage.textContent = "OMG REALLY? I NEVER EXPECTED THIS YAYAYAYAY";
-  bottomMessage.classList.remove("noFont");
-  bottomMessage.classList.add("yesFont");
-  rainbowFlash();
-  showCats();
-});
+let rainbowInterval;
+let rainbowActive = false;
 
-noBtn.addEventListener('click', () => {
-  animationRunning = false;
-  document.body.style.background = "#111111"; // dark
-  bottomMessage.textContent = "How dare you, you're not allowed to say no. I'm gonna rewind time to give you the opportunity to answer correctly.";
-  bottomMessage.classList.remove("yesFont");
-  bottomMessage.classList.add("noFont");
-  setTimeout(() => location.reload(), 4000);
-});
-
-// Rainbow flash effect
-function rainbowFlash() {
+// Infinite rainbow flash
+function startRainbowFlash() {
+  if (rainbowActive) return; // avoid multiple intervals
+  rainbowActive = true;
   const colors = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#9400D3"];
   let i = 0;
-  const interval = setInterval(() => {
+  rainbowInterval = setInterval(() => {
     document.body.style.background = colors[i % colors.length];
     i++;
-    if (i > 20) {
-      clearInterval(interval);
-      document.body.style.background = "#ffe6e6";
-    }
   }, 150);
+}
+
+// Stop rainbow
+function stopRainbowFlash() {
+  clearInterval(rainbowInterval);
+  rainbowActive = false;
 }
 
 // Add cat GIFs
@@ -99,3 +89,23 @@ function showCats() {
   rightCat.classList.add("catGif", "right");
   document.body.appendChild(rightCat);
 }
+
+// Yes click
+yesBtn.addEventListener('click', () => {
+  bottomMessage.textContent = "OMG REALLY? I NEVER EXPECTED THIS YAYAYAYAY";
+  bottomMessage.classList.remove("noFont");
+  bottomMessage.classList.add("yesFont");
+  startRainbowFlash(); // now infinite
+  showCats();
+});
+
+// No click
+noBtn.addEventListener('click', () => {
+  animationRunning = false;
+  stopRainbowFlash(); // stop rainbow
+  document.body.style.background = "#111111"; // dark
+  bottomMessage.textContent = "How dare you, you're not allowed to say no. I'm gonna rewind time to give you the opportunity to answer correctly.";
+  bottomMessage.classList.remove("yesFont");
+  bottomMessage.classList.add("noFont");
+  setTimeout(() => location.reload(), 4000);
+});
