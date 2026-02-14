@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hmmm...</title>
-
-  <!-- Preconnect to Google Fonts for faster loading -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Valentine's Surprise</title>
 
   <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Creepster&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <canvas id="heartCanvas"></canvas>
 
-  <!-- Centered content -->
   <div id="centerContent">
     <h1 id="valentineText">Will you be my Valentine?</h1>
     <div id="buttons">
@@ -27,6 +25,11 @@
   </div>
 
   <div id="bottomMessage"></div>
+
+  <!-- Audio -->
+  <audio id="bgMusic" loop>
+    <source src="cute.mp3" type="audio/mpeg">
+  </audio>
 
   <script src="script.js"></script>
 </body>

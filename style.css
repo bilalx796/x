@@ -1,4 +1,3 @@
-/* Body & Background */
 body {
   margin: 0;
   padding: 0;
@@ -9,7 +8,7 @@ body {
   position: relative;
 }
 
-/* Hearts Canvas */
+/* Canvas */
 #heartCanvas {
   position: fixed;
   top: 0;
@@ -20,7 +19,7 @@ body {
   z-index: 1;
 }
 
-/* Centered content wrapper */
+/* Center content */
 #centerContent {
   position: absolute;
   top: 50%;
@@ -28,28 +27,23 @@ body {
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  align-items: center;  /* horizontally center children */
-  justify-content: center; /* vertical centering */
+  align-items: center;
   text-align: center;
   z-index: 2;
 }
 
-/* Heading */
 h1 {
   margin: 0 0 30px 0;
   font-size: 3em;
   color: #b30059;
 }
 
-/* Buttons container */
 #buttons {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* space between heading and buttons */
-  gap: 40px; /* spacing between buttons */
+  gap: 40px;
 }
 
-/* Buttons styling */
 button {
   font-size: 3em;
   padding: 10px 20px;
@@ -63,32 +57,30 @@ button:hover {
   transform: scale(1.2);
 }
 
-/* Bottom message fixed at bottom */
 #bottomMessage {
   position: fixed;
   bottom: 30px;
   text-align: center;
   width: 100%;
   z-index: 2;
-  font-size: 4em;
+  font-size: 2em;
 }
 
-/* YES message font - Bebas Neue */
+/* Yes Font */
 .yesFont {
-  font-family: 'Bebas Neue', 'Arial', 'Helvetica', sans-serif;
-  color: #b30059; /* pink */
-  font-size: 4em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  color: #b30059;
+  font-size: 2.5em;
 }
 
-/* NO message font - Creepster + shake */
+/* No Font */
 .noFont {
-  font-family: 'Creepster', 'Arial', cursive;
-  color: white; /* scary text */
+  font-family: 'Creepster', cursive;
+  color: white;
   font-size: 2.5em;
   animation: shake 0.2s infinite;
 }
 
-/* Subtle shake animation */
 @keyframes shake {
   0% { transform: translate(0px, 0px); }
   25% { transform: translate(1.5px, -1.5px); }
@@ -97,20 +89,15 @@ button:hover {
   100% { transform: translate(-1.5px, -1.5px); }
 }
 
-/* Cat GIFs */
+/* Cats */
 .catGif {
   position: absolute;
   top: 50%;
-  width: 400px; /* increased size */
+  width: 250px;
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
 }
 
-.catGif.left {
-  left: 20px;
-}
-
-.catGif.right {
-  right: 20px;
-}
+.catGif.left { left: 20px; }
+.catGif.right { right: 20px; }
