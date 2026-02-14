@@ -2,6 +2,9 @@ const canvas = document.getElementById('heartCanvas');
 const ctx = canvas.getContext('2d');
 const bgMusic = document.getElementById('bgMusic');
 
+// 🔥 ADD THIS LINE (thunder sound)
+const thunderSound = new Audio("thunder.mp3");
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -100,13 +103,18 @@ noBtn.addEventListener('click', () => {
   stopRainbowFlash();
   document.body.style.background = "#111111";
 
-  bottomMessage.textContent = "How dare you, you're not allowed to say no.";
+  bottomMessage.textContent = "How DARE you, you're not allowed to say no. I shall rewind time to allow you to fix your mistake.";
   bottomMessage.classList.remove("yesFont");
   bottomMessage.classList.add("noFont");
 
-  // Stop music immediately
+  // Stop cute music
   bgMusic.pause();
   bgMusic.currentTime = 0;
+
+  // 🔥 PLAY THUNDER
+  thunderSound.volume = 0.8;
+  thunderSound.currentTime = 0;
+  thunderSound.play();
 
   setTimeout(() => location.reload(), 4000);
 });
