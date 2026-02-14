@@ -80,7 +80,7 @@ function showCats() {
 yesBtn.addEventListener('click', () => {
   yesClicked = true;
 
-  bottomMessage.textContent = "OMG REALLY? I NEVER EXPECTED THIS YAYAYAYAY";
+  bottomMessage.textContent = "OMG WAIT REALLY? I NEVER EXPECTED THIS OMG YAYAYAYAY";
   bottomMessage.classList.remove("noFont");
   bottomMessage.classList.add("yesFont");
 
@@ -98,7 +98,7 @@ noBtn.addEventListener('click', () => {
   stopRainbowFlash();
   document.body.style.background = "#111111";
 
-  bottomMessage.textContent = "How dare you, you're not allowed to say no.";
+  bottomMessage.textContent = "How dare you, you're not allowed to say no. I will rewind time so you can TRY AGAIN";
   bottomMessage.classList.remove("yesFont");
   bottomMessage.classList.add("noFont");
 
@@ -109,5 +109,5 @@ noBtn.addEventListener('click', () => {
   thunderSound.currentTime = 0;
   thunderSound.play();
 
-  setTimeout(() => location.reload(), 4000);
+  setTimeout(() => location.reload(), 8000);
 });
