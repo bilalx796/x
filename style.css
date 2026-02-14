@@ -1,49 +1,37 @@
-/* Full CSS for Valentine’s page */
-
-/* Body and layout */
+/* Center everything vertically and horizontally */
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: #ffe6e6; /* default pink background */
+  background: #ffe6e6;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-/* Canvas for hearts animation */
-#heartCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+  height: 100vh;           /* full viewport height */
 }
 
 /* Main Valentine heading */
 h1 {
-  position: relative;
   z-index: 2;
   color: #b30059;
   font-size: 3em;
   text-align: center;
-  margin-top: 50px;
+  margin: 0 0 30px 0; /* space below text for buttons */
 }
 
 /* Button container */
 #buttons {
-  position: relative;
   z-index: 2;
-  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* spacing between buttons */
 }
 
-/* Buttons styling */
+/* Optional: keep previous button styling */
 button {
   font-size: 3em;
-  margin: 0 20px;
   padding: 10px 20px;
   cursor: pointer;
   border: none;
@@ -55,7 +43,7 @@ button:hover {
   transform: scale(1.2);
 }
 
-/* Bottom message default style */
+/* Bottom message stays fixed at bottom */
 #bottomMessage {
   position: fixed;
   bottom: 30px;
@@ -63,19 +51,23 @@ button:hover {
   text-align: center;
   width: 100%;
   z-index: 2;
-  color: #b30059; /* default color for Yes messages */
-  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-/* Scary font for No path with subtle shaking */
-.scary {
-  font-family: 'Creepster', cursive, sans-serif; /* local font installed on computer */
+/* Yes message font */
+.yesFont {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #b30059;
+}
+
+/* No message font */
+.noFont {
+  font-family: 'Creepster', cursive, sans-serif;
   color: black;
   font-size: 2.5em;
-  animation: shake 0.2s infinite; /* subtle shake */
+  animation: shake 0.2s infinite;
 }
 
-/* Shake keyframes (subtle) */
+/* Shake animation */
 @keyframes shake {
   0% { transform: translate(0px, 0px); }
   25% { transform: translate(1.5px, -1.5px); }
