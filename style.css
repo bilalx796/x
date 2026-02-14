@@ -1,4 +1,4 @@
-/* Body and background */
+/* Body & Background */
 body {
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
   position: relative;
 }
 
-/* Hearts animation stays behind everything */
+/* Hearts Canvas */
 #heartCanvas {
   position: fixed;
   top: 0;
@@ -20,7 +20,7 @@ body {
   z-index: 1;
 }
 
-/* Wrapper to center text + buttons */
+/* Centered content */
 #centerContent {
   position: absolute;
   top: 50%;
@@ -30,27 +30,24 @@ body {
   z-index: 2;
 }
 
-/* Heading styling */
 h1 {
-  color: #b30059;
-  font-size: 3em;
   margin: 0 0 30px 0;
+  font-size: 3em;
+  color: #b30059;
 }
 
-/* Buttons container */
+/* Buttons */
 #buttons {
   display: flex;
-  justify-content: center;
   gap: 40px;
 }
 
-/* Buttons styling */
 button {
   font-size: 3em;
   padding: 10px 20px;
-  cursor: pointer;
   border: none;
   border-radius: 10px;
+  cursor: pointer;
   transition: transform 0.2s;
 }
 
@@ -58,36 +55,52 @@ button:hover {
   transform: scale(1.2);
 }
 
-/* Bottom message fixed at bottom */
+/* Bottom message */
 #bottomMessage {
   position: fixed;
   bottom: 30px;
-  font-size: 2em;
   text-align: center;
   width: 100%;
   z-index: 2;
+  font-size: 2em;
 }
 
-/* Yes message font - Bebas Neue */
+/* YES message font */
 .yesFont {
-  font-family: 'Bebas Neue', cursive; /* Happy font */
-  color: #ffffff; /* pink */
-  font-size: 2.5em;
+  font-family: 'Bebas Neue', cursive;
+  color: #b30059;
 }
 
-/* No message font - scary + shake */
+/* NO message font & shake */
 .noFont {
-  font-family: 'Creepster', cursive, sans-serif; /* scary font */
-  color: white;
+  font-family: 'Creepster', cursive, sans-serif;
+  color: black;
   font-size: 2.5em;
   animation: shake 0.2s infinite;
 }
 
-/* Subtle shake animation */
 @keyframes shake {
   0% { transform: translate(0px, 0px); }
   25% { transform: translate(1.5px, -1.5px); }
   50% { transform: translate(-1.5px, 1.5px); }
   75% { transform: translate(1.5px, 1.5px); }
   100% { transform: translate(-1.5px, -1.5px); }
+}
+
+/* Cat GIFs */
+.catGif {
+  position: absolute;
+  top: 50%;
+  width: 150px;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.catGif.left {
+  left: 20px;
+}
+
+.catGif.right {
+  right: 20px;
 }

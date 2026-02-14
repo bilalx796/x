@@ -9,7 +9,7 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
 });
 
-// Heart class for animation
+// Heart class for animation (faster falling)
 class Heart {
   constructor() {
     this.reset();
@@ -18,7 +18,7 @@ class Heart {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height - canvas.height;
     this.size = 10 + Math.random() * 20;
-    this.speed = 3 + Math.random() * 4; // faster hearts
+    this.speed = 3 + Math.random() * 4; // faster than before
   }
   draw() {
     ctx.fillStyle = "#ff4d94";
@@ -42,8 +42,8 @@ for (let i = 0; i < 50; i++) hearts.push(new Heart());
 let animationRunning = true;
 
 function animate() {
-  if(animationRunning){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+  if (animationRunning) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     hearts.forEach(h => { h.update(); h.draw(); });
   }
   requestAnimationFrame(animate);
@@ -61,27 +61,41 @@ yesBtn.addEventListener('click', () => {
   bottomMessage.classList.remove("noFont");
   bottomMessage.classList.add("yesFont");
   rainbowFlash();
+  showCats();
 });
 
 noBtn.addEventListener('click', () => {
   animationRunning = false;
-  document.body.style.background = "#111111"; // very dark background
+  document.body.style.background = "#111111"; // dark
   bottomMessage.textContent = "How dare you, you're not allowed to say no. I'm gonna rewind time to give you the opportunity to answer correctly.";
   bottomMessage.classList.remove("yesFont");
-  bottomMessage.classList.add("noFont"); // scary font + shake
+  bottomMessage.classList.add("noFont");
   setTimeout(() => location.reload(), 4000);
 });
 
-// Rainbow flash function for Yes
-function rainbowFlash(){
+// Rainbow flash effect
+function rainbowFlash() {
   const colors = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#9400D3"];
-  let i=0;
-  const interval = setInterval(()=>{
-    document.body.style.background = colors[i%colors.length];
+  let i = 0;
+  const interval = setInterval(() => {
+    document.body.style.background = colors[i % colors.length];
     i++;
-    if(i>20){
+    if (i > 20) {
       clearInterval(interval);
       document.body.style.background = "#ffe6e6";
     }
-  },150);
+  }, 150);
+}
+
+// Add cat GIFs
+function showCats() {
+  const leftCat = document.createElement('img');
+  leftCat.src = "https://i.pinimg.com/originals/7f/d4/93/7fd493d029e88f51324cc8e3ebb8d403.gif";
+  leftCat.classList.add("catGif", "left");
+  document.body.appendChild(leftCat);
+
+  const rightCat = document.createElement('img');
+  rightCat.src = "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyanhmeG8yMGEwNzU5eDBlM2kwYzMwbHg0bmo5Y21jb3dydDgybmhrYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/BK1EfIsdkKZMY/200w.gif";
+  rightCat.classList.add("catGif", "right");
+  document.body.appendChild(rightCat);
 }
