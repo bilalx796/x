@@ -18,7 +18,7 @@ class Heart {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height - canvas.height;
     this.size = 10 + Math.random() * 20;
-    this.speed = 3 + Math.random() * 4; // faster than before
+    this.speed = 3 + Math.random() * 4; // faster hearts
   }
   draw() {
     ctx.fillStyle = "#ff4d94";
@@ -95,7 +95,7 @@ yesBtn.addEventListener('click', () => {
   bottomMessage.textContent = "OMG REALLY? I NEVER EXPECTED THIS YAYAYAYAY";
   bottomMessage.classList.remove("noFont");
   bottomMessage.classList.add("yesFont");
-  startRainbowFlash(); // now infinite
+  startRainbowFlash(); // infinite rainbow
   showCats();
 });
 

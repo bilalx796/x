@@ -75,15 +75,15 @@ button:hover {
 
 /* YES message font - Bebas Neue */
 .yesFont {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', 'Arial', 'Helvetica', sans-serif;
   color: #b30059; /* pink */
   font-size: 2.5em;
 }
 
 /* NO message font - Creepster + shake */
 .noFont {
-  font-family: 'Creepster', cursive, sans-serif;
-  color: white; /* changed from black */
+  font-family: 'Creepster', 'Arial', cursive;
+  color: white; /* scary text */
   font-size: 2.5em;
   animation: shake 0.2s infinite;
 }
@@ -101,7 +101,7 @@ button:hover {
 .catGif {
   position: absolute;
   top: 50%;
-  width: 400px;
+  width: 250px; /* increased size */
   transform: translateY(-50%);
   z-index: 2;
   pointer-events: none;
