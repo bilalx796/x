@@ -68,16 +68,17 @@ button:hover {
   z-index: 2;
 }
 
-/* Yes message font */
+/* Yes message font - Bebas Neue */
 .yesFont {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  color: #b30059; /* pink */
+  font-family: 'Bebas Neue', cursive; /* Happy font */
+  color: #ffffff; /* pink */
+  font-size: 2.5em;
 }
 
 /* No message font - scary + shake */
 .noFont {
   font-family: 'Creepster', cursive, sans-serif; /* scary font */
-  color: black;
+  color: white;
   font-size: 2.5em;
   animation: shake 0.2s infinite;
 }
