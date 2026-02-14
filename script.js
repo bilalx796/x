@@ -56,6 +56,9 @@ const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const bottomMessage = document.getElementById('bottomMessage');
 
+// Flag to prevent No click after Yes
+let yesClicked = false;
+
 let rainbowInterval;
 let rainbowActive = false;
 
@@ -92,15 +95,19 @@ function showCats() {
 
 // Yes click
 yesBtn.addEventListener('click', () => {
+  yesClicked = true; // mark Yes clicked
   bottomMessage.textContent = "OMG REALLY? I NEVER EXPECTED THIS YAYAYAYAY";
   bottomMessage.classList.remove("noFont");
   bottomMessage.classList.add("yesFont");
+
   startRainbowFlash(); // infinite rainbow
   showCats();
 });
 
 // No click
 noBtn.addEventListener('click', () => {
+  if (yesClicked) return; // do nothing if Yes already clicked
+
   animationRunning = false;
   stopRainbowFlash(); // stop rainbow
   document.body.style.background = "#111111"; // dark
