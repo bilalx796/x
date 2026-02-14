@@ -2,9 +2,6 @@ const canvas = document.getElementById('heartCanvas');
 const ctx = canvas.getContext('2d');
 const bgMusic = document.getElementById('bgMusic');
 
-// 🔥 ADD THIS LINE (thunder sound)
-const thunderSound = new Audio("thunder.mp3");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -107,14 +104,9 @@ noBtn.addEventListener('click', () => {
   bottomMessage.classList.remove("yesFont");
   bottomMessage.classList.add("noFont");
 
-  // Stop cute music
+  // Stop music immediately
   bgMusic.pause();
   bgMusic.currentTime = 0;
-
-  // 🔥 PLAY THUNDER
-  thunderSound.volume = 0.8;
-  thunderSound.currentTime = 0;
-  thunderSound.play();
 
   setTimeout(() => location.reload(), 4000);
 });
