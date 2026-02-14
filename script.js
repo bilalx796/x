@@ -38,10 +38,11 @@ class Heart {
 const hearts = [];
 for (let i = 0; i < 50; i++) hearts.push(new Heart());
 
+let animationId;
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   hearts.forEach(h => { h.update(); h.draw(); });
-  requestAnimationFrame(animate);
+  animationId = requestAnimationFrame(animate);
 }
 animate();
 
@@ -96,6 +97,7 @@ noBtn.addEventListener('click', () => {
   if (yesClicked) return;
 
   stopRainbowFlash();
+  cancelAnimationFrame(animationId); // stop hearts animation
   document.body.style.background = "#111111";
 
   bottomMessage.textContent = "How DARE you, you're not allowed to say no. I will rewind time so you can TRY AGAIN.";
@@ -109,5 +111,5 @@ noBtn.addEventListener('click', () => {
   thunderSound.currentTime = 0;
   thunderSound.play();
 
-  setTimeout(() => location.reload(), 4500);
+  setTimeout(() => location.reload(), 4500); // slower reload (8 seconds)
 });
