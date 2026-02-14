@@ -1,77 +1,53 @@
-const yesBtn = document.getElementById('yes');
-const noBtn = document.getElementById('no');
-const messageDiv = document.getElementById('message');
-const countdownDiv = document.getElementById('countdown');
-const finalTextDiv = document.getElementById('final-text');
-const surpriseImg = document.getElementById('surprise-img');
-const kittenGif = document.getElementById('kitten-gif');
+const canvas = document.getElementById('heartCanvas');
+const ctx = canvas.getContext('2d');
 
-const noMessages = [
-  "umm choose again",
-  "i think ur choosing the wrong one lol",
-  "ok fr i get it's funny but stop now",
-  "BABY STOP ITTTT NOWW",
-  "ok ykw, choose no again and see what happens"
-];
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-let noCount = 0;
-let countdownStarted = false;
-let yesClicked = false;
-
-noBtn.addEventListener('click', () => {
-  if (noCount < noMessages.length) {
-    messageDiv.textContent = noMessages[noCount]; // replace previous message
-    noCount++;
-  } else if (!countdownStarted) {
-    countdownStarted = true;
-    startCountdown();
-  }
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
 
-yesBtn.addEventListener('click', () => {
-  if (!yesClicked) {
-    yesClicked = true;
-
-    // Hide the Yes button
-    yesBtn.style.display = 'none';
-
-    // Show final text above
-    finalTextDiv.textContent = "yeah what now?";
-
-    // Show kitten/puppy image
-    surpriseImg.style.display = "block";
-
-  } else {
-    // second click triggers rainbow flash and kitten GIF
-    rainbowFlash();
+class Heart {
+  constructor() {
+    this.reset();
   }
-});
-
-function startCountdown() {
-  let count = 3;
-  countdownDiv.textContent = count;
-  const interval = setInterval(() => {
-    count--;
-    if (count > 0) {
-      countdownDiv.textContent = count;
-    } else {
-      clearInterval(interval);
-      countdownDiv.textContent = "";
-      yesBtn.click(); // force yes
-    }
-  }, 1000);
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height - canvas.height;
+    this.size = 10 + Math.random() * 20;
+    this.speed = 1 + Math.random() * 3;
+    this.angle = Math.random() * Math.PI * 2;
+  }
+  draw() {
+    ctx.fillStyle = "#ff4d94";
+    ctx.beginPath();
+    ctx.moveTo(this.x, this.y);
+    ctx.bezierCurveTo(this.x, this.y - this.size / 2, this.x - this.size, this.y - this.size / 2, this.x - this.size, this.y);
+    ctx.bezierCurveTo(this.x - this.size, this.y + this.size / 2, this.x, this.y + this.size / 1.5, this.x, this.y + this.size);
+    ctx.bezierCurveTo(this.x, this.y + this.size / 1.5, this.x + this.size, this.y + this.size / 2, this.x + this.size, this.y);
+    ctx.bezierCurveTo(this.x + this.size, this.y - this.size / 2, this.x, this.y - this.size / 2, this.x, this.y);
+    ctx.fill();
+  }
+  update() {
+    this.y += this.speed;
+    if (this.y > canvas.height + this.size) this.reset();
+  }
 }
 
-function rainbowFlash() {
-  let colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
-  let i = 0;
-  const interval = setInterval(() => {
-    document.body.style.background = colors[i % colors.length];
-    i++;
-    if (i > 20) { // flash 20 times
-      clearInterval(interval);
-      document.body.style.background = "#ffe6e6"; // reset background
-      kittenGif.style.display = "block";
-    }
-  }, 150);
+const hearts = [];
+for (let i = 0; i < 50; i++) {
+  hearts.push(new Heart());
 }
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hearts.forEach(h => {
+    h.update();
+    h.draw();
+  });
+  requestAnimationFrame(animate);
+}
+
+animate();
