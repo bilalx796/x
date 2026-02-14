@@ -58,17 +58,19 @@ const bottomMessage = document.getElementById('bottomMessage');
 
 yesBtn.addEventListener('click', () => {
   bottomMessage.textContent = "OMG REALLY? I NEVER EXPECTED THIS YAYAYAYAY";
+  bottomMessage.classList.remove("scary"); // remove scary style if applied
   rainbowFlash();
 });
 
 noBtn.addEventListener('click', () => {
-  animationRunning = false;
-  document.body.style.background = "#d3d3d3";
+  animationRunning = false;                  // stop hearts
+  document.body.style.background = "#111111"; // very dark background
   bottomMessage.textContent = "How dare you, you're not allowed to say no. I'm gonna rewind time to give you the opportunity to answer correctly.";
-  setTimeout(() => location.reload(), 4000);
+  bottomMessage.classList.add("scary");       // apply scary font and shake
+  setTimeout(() => location.reload(), 4000); // reload after 4s
 });
 
-// Rainbow flash function
+// Rainbow flash function for Yes
 function rainbowFlash(){
   const colors = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#9400D3"];
   let i=0;

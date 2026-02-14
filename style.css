@@ -1,3 +1,6 @@
+/* Import creepy font */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -52,8 +55,25 @@ button:hover {
   position: fixed;
   bottom: 30px;
   font-size: 2em;
-  color: #b30059;
   text-align: center;
   width: 100%;
   z-index: 2;
+  color: #b30059; /* default color for Yes messages */
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* scary font and shake animation for No path */
+.scary {
+  font-family: 'Creepster', cursive, sans-serif;
+  color: black;
+  font-size: 2.5em;
+  animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(3px, -3px); }
+  50% { transform: translate(-3px, 3px); }
+  75% { transform: translate(3px, 3px); }
+  100% { transform: translate(-3px, -3px); }
 }
