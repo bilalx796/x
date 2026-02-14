@@ -1,17 +1,18 @@
-/* Import creepy font */
-@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+/* Full CSS for Valentine’s page */
 
+/* Body and layout */
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: #ffe6e6;
+  background: #ffe6e6; /* default pink background */
   font-family: 'Comic Sans MS', cursive, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Canvas for hearts animation */
 #heartCanvas {
   position: fixed;
   top: 0;
@@ -22,6 +23,7 @@ body {
   z-index: 1;
 }
 
+/* Main Valentine heading */
 h1 {
   position: relative;
   z-index: 2;
@@ -31,12 +33,14 @@ h1 {
   margin-top: 50px;
 }
 
+/* Button container */
 #buttons {
   position: relative;
   z-index: 2;
   margin-top: 30px;
 }
 
+/* Buttons styling */
 button {
   font-size: 3em;
   margin: 0 20px;
@@ -51,6 +55,7 @@ button:hover {
   transform: scale(1.2);
 }
 
+/* Bottom message default style */
 #bottomMessage {
   position: fixed;
   bottom: 30px;
@@ -62,18 +67,19 @@ button:hover {
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-/* scary font and shake animation for No path */
+/* Scary font for No path with subtle shaking */
 .scary {
-  font-family: 'Creepster', cursive, sans-serif;
+  font-family: 'Creepster', cursive, sans-serif; /* local font installed on computer */
   color: black;
   font-size: 2.5em;
-  animation: shake 0.1s infinite;
+  animation: shake 0.2s infinite; /* subtle shake */
 }
 
+/* Shake keyframes (subtle) */
 @keyframes shake {
   0% { transform: translate(0px, 0px); }
-  25% { transform: translate(3px, -3px); }
-  50% { transform: translate(-3px, 3px); }
-  75% { transform: translate(3px, 3px); }
-  100% { transform: translate(-3px, -3px); }
+  25% { transform: translate(1.5px, -1.5px); }
+  50% { transform: translate(-1.5px, 1.5px); }
+  75% { transform: translate(1.5px, 1.5px); }
+  100% { transform: translate(-1.5px, -1.5px); }
 }
